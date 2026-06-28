@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>rock-paper-scissors</title>
+        <style>
+        body {
+            background-color: #00ffc0;
+            text-align: center;
+        }
+
+        .oneline {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <h3 id="handAI" class="oneline">AI move here</h3> 
+        <h3 id="handHU" class="oneline">Human move here</h3>
+        <h3 id="result">Result here</h3>
+        <br>
+        <button onclick="updateHuman(1)">Rock</button>
+        <button onclick="updateHuman(2)">Paper</button>
+        <button onclick="updateHuman(3)">Scissors</button>
+        <script>
+            let handAN = "";
+            let handHU = "";
+            let result = "";
+            function updatedisplay() {
+                document.getElementById("handAI").textContent = handAN;
+                document.getElementById("handHU").textContent = handHU;
+                document.getElementById("result").textContent = result;
+            }
+
+            function updateAI() {
+                const random = Math.random() * 3;
+                let hand = Math.round(random);
+                if (hand === 1) {
+                    handAN = "Rock";
+                } else if (hand === 2) {
+                    handAN = "Paper";
+                } else if (hand === 3) {
+                    handAN = "Scissors";
+                }
+                updatedisplay();
+            }
+
+            function updateResult() {
+                if (handHU === handAN) {
+                    result = "It's a tie!";
+                } else if (
+                    (handHU === "Rock" && handAN === "Scissors") ||
+                    (handHU === "Paper" && handAN === "Rock") ||
+                    (handHU === "Scissors" && handAN === "Paper")
+                ) {
+                    result = "You win!";
+                } else {
+                    result = "You lose!";
+                }
+                updatedisplay();
+            }
+
+            function updateHuman(value) {
+                if (value === 1) {
+                    handHU = "Rock";
+                } else if (value === 2) {
+                    handHU = "Paper";
+                } else if (value === 3) {
+                    handHU = "Scissors";
+                }
+                updateAI();
+                updateResult();
+                updatedisplay();
+            }
+
+        </script>
+    </body>
+</html>
