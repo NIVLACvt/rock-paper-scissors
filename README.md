@@ -7,10 +7,15 @@
 <h2>
   This was made with:
 </h2>
-  VS vode editor, HTML, and javascript <br>
+  VS vode editor, HTML, and javascript
+  <br>
   There was no AI used in this project
 <h2>
   How you can view:
 </h2>
-  
+  go to https://nivlacvt.github.io/rock-paper-scissors/ to vie my website
+  <br>
+<h3>
+  enjoy
+</h3>
 </b>
