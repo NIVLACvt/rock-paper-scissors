@@ -15,7 +15,7 @@
 </h2>
   go to https://nivlacvt.github.io/rock-paper-scissors/ to vie my website
   <br>
-<h3>
+<h2>
   enjoy
-</h3>
+</h2>
 </b>
