@@ -13,7 +13,7 @@
 <h2>
   How you can view:
 </h2>
-  go to https://nivlacvt.github.io/rock-paper-scissors/ to vie my website
+  <a href="https://nivlacvt.github.io/rock-paper-scissors/" target"_blank">click here</a> to vie my website
   <br>
 <h2>
   enjoy
