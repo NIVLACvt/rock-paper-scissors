@@ -28,6 +28,9 @@
             let handAN = "";
             let handHU = "";
             let result = "";
+            let winAI = false;
+            let loseAI = false;
+            let tieAI = false;
             function updatedisplay() {
                 document.getElementById("handAI").textContent = handAN;
                 document.getElementById("handHU").textContent = handHU;
@@ -35,14 +38,20 @@
             }
 
             function updateAI() {
-                const random = Math.random() * 3;
-                let hand = Math.round(random);
-                if (hand === 1) {
-                    handAN = "Rock";
-                } else if (hand === 2) {
-                    handAN = "Paper";
-                } else if (hand === 3) {
+                if (loseAI === true && handAN === "Rock") {
                     handAN = "Scissors";
+                } else if (winAI === true && handAN === "Rock") {
+                    handAN = "Paper";
+                } else if (tieAI === true && handAN === handHU) {
+                    handAN = handAN;
+                } else if (loseAI === true && handAN === "Paper") {
+                    handAN = "Rock";
+                } else if (winAI === true && handAN === "Paper") {
+                    handAN = "Scissors";
+                } else if (loseAI === true && handAN === "Scissors") {
+                    handAN = "Paper";
+                } else if (winAI === true && handAN === "Scissors") {
+                    handAN = "Rock";
                 }
                 updatedisplay();
             }
@@ -50,14 +59,23 @@
             function updateResult() {
                 if (handHU === handAN) {
                     result = "It's a tie!";
+                    tieAI = true;
+                    winAI = false;
+                    loseAI = false;
                 } else if (
                     (handHU === "Rock" && handAN === "Scissors") ||
                     (handHU === "Paper" && handAN === "Rock") ||
                     (handHU === "Scissors" && handAN === "Paper")
                 ) {
                     result = "You win!";
+                    loseAI = true;
+                    winAI = false;
+                    tieAI = false;
                 } else {
                     result = "You lose!";
+                    winAI = true;
+                    loseAI = false;
+                    tieAI = false;
                 }
                 updatedisplay();
             }
@@ -70,6 +88,7 @@
                 } else if (value === 3) {
                     handHU = "Scissors";
                 }
+                handAN = "Rock";
                 updateAI();
                 updateResult();
                 updatedisplay();
