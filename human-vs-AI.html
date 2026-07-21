@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>rock-paper-scissors</title>
+        <style>
+        body {
+            background-color: #00ffc0;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .oneline {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: bolder;
+            color: rgb(174, 0, 255);
+        }
+
+        .updateHU {
+            width: 128px;
+            height: 64px;
+            color: rgb(13, 0, 255);
+            font-weight: bolder;
+            background-color: #00ffc0;
+            border: 5px solid #008080;
+        }
+
+        .updateHU:active {
+            background-color: #008080;
+            border: 5px solid #00ffc0;
+        }
+
+        #result {
+            color: rgb(119, 112, 255);
+            font-weight: bolder;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <h3 id="handAI" class="oneline">AI move here</h3> 
+        <h3 id="handHU" class="oneline">Human move here</h3>
+        <h3 id="result">Result here</h3>
+        <br>
+        <button class="updateHU" onclick="updateHuman(1)">Rock</button>
+        <button class="updateHU" onclick="updateHuman(2)">Paper</button>
+        <button class="updateHU" onclick="updateHuman(3)">Scissors</button>
+        <br><br><br><br>
+        <h3 class="oneline">Wins</h3>
+        <h3 class="oneline">Ties</h3>
+        <h3 class="oneline">Losses</h3>
+        <br>
+        <h3 id="wins" class="oneline"></h3>
+        <h3 id="ties" class="oneline"></h3>
+        <h3 id="losses" class="oneline"></h3>
+        <script>
+            let handAN = "";
+            let handHU = "";
+            let hand = "";
+            let result = "";
+            let wins = "0";
+            let losses = "0";
+            let ties = "0";
+            let winAI = false;
+            let loseAI = false;
+            let tieAI = false;
+            function updatedisplay() {
+                document.getElementById("handAI").textContent = handAN;
+                document.getElementById("handHU").textContent = handHU;
+                document.getElementById("result").textContent = result;
+                document.getElementById("wins").textContent = wins;
+                document.getElementById("losses").textContent = losses;
+                document.getElementById("ties").textContent = ties;
+            }
+
+            function updateAI() {
+                hand = Math.floor(Math.random() * 3) + 1;
+                if (hand === 1) {
+                    handAN = "Rock";
+                } else if (hand === 2) {
+                    handAN = "Paper";
+                } else {
+                    handAN = "Scissors";
+                }
+                updatedisplay();
+            }
+
+            function updateResult() {
+                if (handHU === handAN) {
+                    result = "It's a tie!";
+                    ties = parseInt(ties) + 1;
+                } else if (
+                    (handHU === "Rock" && handAN === "Scissors") ||
+                    (handHU === "Paper" && handAN === "Rock") ||
+                    (handHU === "Scissors" && handAN === "Paper")
+                ) {
+                    result = "You win!";
+                    wins = parseInt(wins) + 1;
+                } else {
+                    result = "You lose!";
+                    losses = parseInt(losses) + 1;
+                }
+                updatedisplay();
+            }
+
+            function updateHuman(value) {
+                if (value === 1) {
+                    handHU = "Rock";
+                } else if (value === 2) {
+                    handHU = "Paper";
+                } else if (value === 3) {
+                    handHU = "Scissors";
+                }
+                updateAI();
+                updateResult();
+                updatedisplay();
+            }
+
+        </script>
+    </body>
+</html>

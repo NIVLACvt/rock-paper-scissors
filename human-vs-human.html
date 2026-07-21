@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>rock-paper-scissors</title>
+        <style>
+        body {
+            background-color: #00ffc0;
+            font-weight: bolder;
+            text-align: center;
+        }
+
+        .oneline {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: bolder;
+            color: rgb(174, 0, 255);
+        }
+
+        .updateHU {
+            width: 128px;
+            height: 64px;
+            color: rgb(13, 0, 255);
+            font-weight: bolder;
+            background-color: #00ffc0;
+            border: 5px solid #008080;
+        }
+
+        .updateHU:active {
+            background-color: #008080;
+            border: 5px solid #00ffc0;
+        }
+
+        #result {
+            color: rgb(119, 112, 255);
+            font-weight: bolder;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <h3 id="human1" class="oneline">player 1's move here</h3>
+        <h3 id="human2" class="oneline">player 2's move here</h3>
+        <h3 id="result">Result here</h3>
+        <br>
+        <h3>Player 1</h3>
+        <button class="updateHU" onclick="updateHuman1(1)">Rock</button>
+        <button class="updateHU" onclick="updateHuman1(2)">Paper</button>
+        <button class="updateHU" onclick="updateHuman1(3)">Scissors</button>
+        <br><br>
+        <h3>Player 2</h3>
+        <button class="updateHU" onclick="updateHuman2(1)">Rock</button>
+        <button class="updateHU" onclick="updateHuman2(2)">Paper</button>
+        <button class="updateHU" onclick="updateHuman2(3)">Scissors</button>
+        <br><br>
+        <button class="updateHU" onclick="clearResult()">Clear</button>
+
+        <br><br><br><br>
+        <h3 class="oneline">Wins</h3>
+        <h3 class="oneline">Ties</h3>
+        <h3 class="oneline">Losses</h3>
+        <br>
+        <h3 id="wins" class="oneline"></h3>
+        <h3 id="ties" class="oneline"></h3>
+        <h3 id="losses" class="oneline"></h3>
+        <script>
+            let handHU1 = "";
+            let handHU2 = "";
+            let hand = "";
+            let result = "";
+            let wins = "0";
+            let losses = "0";
+            let ties = "0";
+            let winAI = false;
+            let loseAI = false;
+            let tieAI = false;
+            let human1 = "";
+            let human2 = "";
+            let turn1 = false;
+            let turn2 = false;
+
+            function updatedisplay() {
+                document.getElementById("human1").textContent = handHU1;
+                document.getElementById("human2").textContent = handHU2;
+                document.getElementById("result").textContent = result;
+                document.getElementById("wins").textContent = wins;
+                document.getElementById("losses").textContent = losses;
+                document.getElementById("ties").textContent = ties;
+            }
+
+            function clearResult() {
+                document.getElementById("human1").textContent = "player 1's move here";
+                document.getElementById("human2").textContent = "player 2's move here";
+                document.getElementById("result").textContent = "Result here";
+                handHU1 = "0";
+                handHU2 = "0";
+            }
+
+            function updateResult() {
+                if (human1 === human2) {
+                    result = "It's a tie!";
+                    ties = parseInt(ties) + 1;
+                } else if (
+                    (human1 === "Rock" && human2 === "Scissors") ||
+                    (human1 === "Paper" && human2 === "Rock") ||
+                    (human1 === "Scissors" && human2 === "Paper")
+                ) {
+                    result = "You win!";
+                    wins = parseInt(wins) + 1;
+                } else {
+                    result = "You lose!";
+                    losses = parseInt(losses) + 1;
+                }
+                updatedisplay();
+            }
+
+            function updateHuman2(value) {
+                if (value === 1) {
+                    handHU2 = "Rock";
+                } else if (value === 2) {
+                    handHU2 = "Paper";
+                } else if (value === 3) {
+                    handHU2 = "Scissors";
+                }
+                human2 = handHU2;
+                if (turn1 === true) {
+                    updateResult();
+                    updatedisplay();
+                } else {
+                    turn2 = true;
+                }
+            }
+
+            function updateHuman1(value) {
+                if (value === 1) {
+                    handHU1 = "Rock";
+                } else if (value === 2) {
+                    handHU1 = "Paper";
+                } else if (value === 3) {
+                    handHU1 = "Scissors";
+                }
+                human1 = handHU1;
+                if (turn2 === true) {
+                    updateResult();
+                    updatedisplay();
+                } else {
+                    turn1 = true;
+                }
+            }
+
+        </script>
+    </body>
+</html>
