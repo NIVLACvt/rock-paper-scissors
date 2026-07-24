@@ -2,8 +2,10 @@
 <h2>
   futures incluse:
 </h2>
-  A working rock paper scissors game
-  with a ful set of rock paper and scissors buttons
+  There are three modes:<br>
+  1. AI vs AI<br>
+  2. Human vs AI<br>
+  3. Human vs Human
 <h2>
   This was made with:
 </h2>
