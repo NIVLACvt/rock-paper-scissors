@@ -9,7 +9,7 @@
 </h2>
   VS vode editor, HTML, and javascript
   <br>
-  There was no AI used in this project
+  There was no AI used in the making of this project
 <h2>
   How you can view:
 </h2>
