@@ -2,7 +2,7 @@
 <h2>
   futures incluse:
 </h2>
-  There are three modes:<br>
+  There are three game modes:<br>
   1. AI vs AI<br>
   2. Human vs AI<br>
   3. Human vs Human
